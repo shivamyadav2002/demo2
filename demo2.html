@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Braj Chaatkara - Swad Braj ka</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon (Peacock Emoji) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦚</text></svg>">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    <style>
+        /* Custom styles to integrate the fonts */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF8E1; /* A warm, inviting cream color */
+        }
+        .font-tangerine {
+            font-family: 'Tangerine', cursive;
+        }
+        /* Custom background textures */
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
+            background-color: #FFF8E1;
+        }
+         .texture-bg-light {
+            background-image: url('https://www.transparenttextures.com/patterns/subtle-zebra-3d.png');
+            background-color: #fdfaf3;
+        }
+        /* Animation for elements on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Style for testimonial quotes */
+        .testimonial-quote::before {
+            content: '“';
+            font-family: 'Georgia', serif;
+            font-size: 4rem;
+            color: #14B8A6;
+            position: absolute;
+            left: -10px;
+            top: -20px;
+            opacity: 0.2;
+        }
+        
+        /* Floating Peacock Feathers Animation */
+        .feather-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* Keep behind content */
+        }
+        .feather {
+            position: absolute;
+            /* SVG peacock feather */
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><defs><radialGradient id="eye" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"><stop offset="0%" stop-color="%234A90E2"/><stop offset="40%" stop-color="%23005C97"/><stop offset="80%" stop-color="%23363795"/><stop offset="100%" stop-color="transparent"/></radialGradient><linearGradient id="stem" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="%232DD4BF"/><stop offset="100%" stop-color="%23047857"/></linearGradient></defs><path d="M50 200 C 40 100, 40 50, 50 40 Q 50 30, 60 40 C 60 50, 60 100, 50 200" fill="url(%23stem)"/><circle cx="50" cy="50" r="20" fill="url(%23eye)"/><path d="M50,70 Q20,130 50,200 Q80,130 50,70" fill="url(%23stem)" opacity="0.5"/></svg>');
+            background-repeat: no-repeat;
+            background-size: contain;
+            animation: floatDown linear infinite;
+        }
+
+        @keyframes floatDown {
+            0% {
+                transform: translateY(-10vh) rotate(-10deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(110vh) rotate(10deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Variations for each feather to make it look natural */
+        .feather:nth-child(1) { left: 10%; width: 60px; height: 120px; animation-duration: 22s; animation-delay: -5s; }
+        .feather:nth-child(2) { left: 20%; width: 40px; height: 80px; animation-duration: 18s; animation-delay: -12s; }
+        .feather:nth-child(3) { left: 30%; width: 70px; height: 140px; animation-duration: 25s; animation-delay: -20s; }
+        .feather:nth-child(4) { left: 45%; width: 50px; height: 100px; animation-duration: 20s; animation-delay: -2s; }
+        .feather:nth-child(5) { left: 60%; width: 80px; height: 160px; animation-duration: 17s; animation-delay: -15s; }
+        .feather:nth-child(6) { left: 75%; width: 45px; height: 90px; animation-duration: 23s; animation-delay: -8s; }
+        .feather:nth-child(7) { left: 85%; width: 55px; height: 110px; animation-duration: 19s; animation-delay: 0s; }
+        .feather:nth-child(8) { left: 5%; width: 35px; height: 70px; animation-duration: 26s; animation-delay: -18s; }
+        .feather:nth-child(9) { left: 95%; width: 65px; height: 130px; animation-duration: 21s; animation-delay: -10s; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="font-tangerine text-4xl text-teal-700">Braj Chaatkara</a>
+            <nav id="desktop-nav" class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-teal-600 transition duration-300">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-teal-600 transition duration-300">Our Story</a>
+                <a href="#menu" class="text-gray-600 hover:text-teal-600 transition duration-300">Menu</a>
+                <a href="#gallery" class="text-gray-600 hover:text-teal-600 transition duration-300">Gallery</a>
+                <a href="#contact" class="text-gray-600 hover:text-teal-600 transition duration-300">Contact</a>
+            </nav>
+            <a href="#contact" class="hidden md:block bg-amber-500 text-white px-4 py-2 rounded-full hover:bg-amber-600 transition duration-300 shadow-sm">Order Now</a>
+             <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-teal-700">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+         <!-- Mobile Menu -->
+        <div id="mobile-nav" class="hidden md:hidden bg-white/95">
+            <a href="#home" class="block py-2 px-6 text-gray-700 hover:bg-teal-50">Home</a>
+            <a href="#about" class="block py-2 px-6 text-gray-700 hover:bg-teal-50">Our Story</a>
+            <a href="#menu" class="block py-2 px-6 text-gray-700 hover:bg-teal-50">Menu</a>
+            <a href="#gallery" class="block py-2 px-6 text-gray-700 hover:bg-teal-50">Gallery</a>
+            <a href="#contact" class="block py-2 px-6 text-gray-700 hover:bg-teal-50">Contact</a>
+            <div class="p-4"><a href="#contact" class="w-full text-center block bg-amber-500 text-white px-4 py-2 rounded-full hover:bg-amber-600 transition duration-300 shadow-sm">Order Now</a></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-20 texture-bg relative overflow-hidden">
+             <!-- Feather Animation Container -->
+            <div class="feather-container">
+                <div class="feather"></div>
+                <div class="feather"></div>
+                <div class="feather"></div>
+                <div class="feather"></div>
+                <div class="feather"></div>
+                <div class="feather"></div>
+                <div class="feather"></div>
+                <div class="feather"></div>
+                <div class="feather"></div>
+            </div>
+             <!-- Decorative peacock feather elements -->
+            <div class="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3 opacity-20">
+                <svg width="400" height="400" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 0C44.77 0 0 44.77 0 100C0 155.23 44.77 200 100 200C127.61 200 150 110.46 150 100C150 89.54 127.61 0 100 0Z" fill="url(#paint0_linear_101_2)"/>
+                    <defs><linearGradient id="paint0_linear_101_2" x1="75" y1="0" x2="75" y2="200" gradientUnits="userSpaceOnUse"><stop stop-color="#2DD4BF"/><stop offset="1" stop-color="#047857"/></linearGradient></defs>
+                </svg>
+            </div>
+            <div class="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 opacity-20">
+                <svg width="500" height="500" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 200C155.23 200 200 155.23 200 100C200 44.77 155.23 0 100 0C72.39 0 50 89.54 50 100C50 110.46 72.39 200 100 200Z" fill="url(#paint1_linear_101_3)"/>
+                    <defs><linearGradient id="paint1_linear_101_3" x1="125" y1="0" x2="125" y2="200" gradientUnits="userSpaceOnUse"><stop stop-color="#F59E0B"/><stop offset="1" stop-color="#D97706"/></linearGradient></defs>
+                </svg>
+            </div>
+            <div class="container mx-auto px-6 text-center z-10">
+                <h1 class="font-tangerine text-8xl md:text-9xl text-teal-800 drop-shadow-lg">Braj Chaatkara</h1>
+                <p class="text-2xl md:text-3xl text-amber-700 mt-2">......Swad Braj ka......</p>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-600">
+                    Experience the authentic and mouth-watering flavors of Braj's famous street food, right here in Nashik. Every dish is a tradition, prepared with love and the finest ingredients.
+                </p>
+                <a href="#menu" class="mt-8 inline-block bg-teal-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-teal-700 transition duration-300 shadow-lg transform hover:scale-105">Explore Our Menu</a>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 reveal">
+                        <img src="https://placehold.co/600x500/0D9488/FFFFFF?text=Our+Heritage" alt="Our Story" class="rounded-lg shadow-xl">
+                    </div>
+                    <div class="md:w-1/2 reveal">
+                        <h2 class="font-tangerine text-7xl text-teal-800 mb-4">Our Story</h2>
+                        <p class="text-gray-600 mb-4">
+                            Born from a passion for authentic Indian street food, Braj Chaatkara brings the timeless recipes from the streets of Mathura and Vrindavan to your plate. Our founder, inspired by the rich culinary heritage of the Braj region, set out to create a place where people could savor the true "Swad Braj ka".
+                        </p>
+                        <p class="text-gray-600">
+                            We use only the freshest, locally-sourced ingredients and traditional spice blends to ensure every bite is a burst of flavor and nostalgia. Come, be a part of our journey.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="py-20 texture-bg-light">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="font-tangerine text-7xl text-teal-800">Our Menu</h2>
+                    <p class="text-gray-500 mt-2">A delightful journey for your taste buds.</p>
+                </div>
+                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Menu Item Card -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 reveal">
+                        <img src="https://placehold.co/600x400/F59E0B/FFFFFF?text=Chole+Bhature" alt="Chole Bhature" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2 text-amber-800">Chole Bhature / Kulche</h3>
+                            <p class="text-gray-600">Fluffy bhature served with spicy and tangy chickpea curry. A classic North Indian delight!</p>
+                        </div>
+                    </div>
+                     <!-- Today's Special Card -->
+                    <div class="bg-teal-700 text-white rounded-lg shadow-2xl overflow-hidden transform hover:-translate-y-2 transition duration-300 reveal flex flex-col justify-center items-center p-6 border-4 border-amber-400" style="transition-delay: 100ms;">
+                         <h3 class="font-tangerine text-5xl mb-2">Today's Special</h3>
+                         <div class="text-amber-300 text-lg mb-4">
+                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                         </div>
+                         <h4 class="text-3xl font-bold mb-2">Dahi Bhalla</h4>
+                         <p class="text-center text-teal-100">Soft, melt-in-your-mouth lentil dumplings in creamy yogurt. A true taste of heaven!</p>
+                    </div>
+                    <!-- Menu Item Card -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 reveal" style="transition-delay: 200ms;">
+                         <img src="https://placehold.co/600x400/D97706/FFFFFF?text=Aloo+Tikki" alt="Aloo Tikki Chaat" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2 text-amber-800">Aloo Tikki Chaat</h3>
+                            <p class="text-gray-600">Crispy potato patties smashed and topped with yogurt, tamarind chutney, and spices.</p>
+                        </div>
+                    </div>
+                     <!-- Menu Item Card -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 reveal" style="transition-delay: 300ms;">
+                         <img src="https://placehold.co/600x400/DC2626/FFFFFF?text=Papdi+Chaat" alt="Papdi Chaat" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2 text-amber-800">Papdi Chaat</h3>
+                            <p class="text-gray-600">A crunchy, tangy, and sweet chaat made with crispy papdis, boiled potatoes, and chutneys.</p>
+                        </div>
+                    </div>
+                    <!-- Menu Item Card -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 reveal" style="transition-delay: 400ms;">
+                         <img src="https://placehold.co/600x400/16A34A/FFFFFF?text=Paratha" alt="Paratha" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2 text-amber-800">Paratha</h3>
+                            <p class="text-gray-600">Wholesome and delicious Indian flatbread, stuffed or plain, cooked to perfection.</p>
+                        </div>
+                    </div>
+                    <!-- Menu Item Card -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 reveal" style="transition-delay: 500ms;">
+                         <img src="https://placehold.co/600x400/9333EA/FFFFFF?text=Fusion+Bites" alt="Burgers & Sandwiches" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2 text-amber-800">Burger & Sandwiches</h3>
+                            <p class="text-gray-600">A fusion of flavors when you want something different, made with our special twist.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 texture-bg">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12 reveal">
+                    <h2 class="font-tangerine text-7xl text-teal-800">Food Gallery</h2>
+                    <p class="text-gray-500 mt-2">A glimpse of our delicious offerings.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid gap-4">
+                        <div class="reveal"><img class="h-auto max-w-full rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300" src="https://placehold.co/500x700/F59E0B/FFFFFF?text=Swad" alt=""></div>
+                        <div class="reveal"><img class="h-auto max-w-full rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300" src="https://placehold.co/500x400/059669/FFFFFF?text=Braj" alt=""></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div class="reveal"><img class="h-auto max-w-full rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300" src="https://placehold.co/500x500/D97706/FFFFFF?text=Ka" alt=""></div>
+                        <div class="reveal"><img class="h-auto max-w-full rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300" src="https://placehold.co/500x800/DC2626/FFFFFF?text=Chaat" alt=""></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div class="reveal"><img class="h-auto max-w-full rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300" src="https://placehold.co/500x800/16A34A/FFFFFF?text=Yummy" alt=""></div>
+                        <div class="reveal"><img class="h-auto max-w-full rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300" src="https://placehold.co/500x500/9333EA/FFFFFF?text=Food" alt=""></div>
+                    </div>
+                     <div class="grid gap-4">
+                        <div class="reveal"><img class="h-auto max-w-full rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300" src="https://placehold.co/500x400/2DD4BF/FFFFFF?text=Spicy" alt=""></div>
+                        <div class="reveal"><img class="h-auto max-w-full rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300" src="https://placehold.co/500x700/047857/FFFFFF?text=Tasty" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="font-tangerine text-7xl text-teal-800">What Our Customers Say</h2>
+                    <p class="text-gray-500 mt-2">We love our customers, and they love us too!</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md reveal relative">
+                        <p class="text-gray-600 italic testimonial-quote">"The best Chole Bhature I've had in Nashik! Tasted just like home. Highly recommended."</p>
+                        <div class="mt-4 text-right">
+                            <p class="font-bold text-amber-800">- Priya S.</p>
+                            <p class="text-sm text-gray-500">Food Blogger</p>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 2 -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md reveal relative" style="transition-delay: 200ms;">
+                        <p class="text-gray-600 italic testimonial-quote">"Aloo Tikki Chaat was simply divine. Perfectly crispy and flavorful. I'll be back for more!"</p>
+                        <div class="mt-4 text-right">
+                            <p class="font-bold text-amber-800">- Rohan K.</p>
+                            <p class="text-sm text-gray-500">Local Resident</p>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 3 -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md reveal relative" style="transition-delay: 400ms;">
+                        <p class="text-gray-600 italic testimonial-quote">"Authentic taste and great service. It felt like I was back in Delhi. A must-visit place for chaat lovers."</p>
+                        <div class="mt-4 text-right">
+                            <p class="font-bold text-amber-800">- Anjali M.</p>
+                            <p class="text-sm text-gray-500">Satisfied Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 texture-bg-light">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="font-tangerine text-7xl text-teal-800">Visit Us</h2>
+                    <p class="text-gray-500 mt-2">We are waiting to serve you!</p>
+                </div>
+                <div class="flex flex-col md:flex-row gap-8 md:gap-12">
+                    <!-- Map -->
+                    <div class="md:w-1/2 rounded-lg overflow-hidden shadow-lg reveal">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.191632788548!2d73.8184523153924!3d19.99965198656372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU5JzU4LjgiTiA3M8KwNDknMTQuNCJF!5e0!3m2!1sen!2sin!4v1672548846152!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Location of Braj Chaatkara">
+                        </iframe>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="md:w-1/2 reveal">
+                        <div class="bg-white p-8 rounded-lg shadow-inner h-full">
+                            <h3 class="text-3xl font-bold text-amber-800 mb-4">Contact & Address</h3>
+                            <div class="space-y-4 text-gray-700">
+                                <p class="flex items-start">
+                                    <i class="fas fa-map-marker-alt h-6 w-6 mr-3 mt-1 text-teal-600"></i>
+                                    <span>Braj Chaatkara, Matoshree Niwas, Near Sushila Pharmacy, Chavan Mala, Gayekhe Colony, Nashik Road, Nashik</span>
+                                </p>
+                                <p class="flex items-center">
+                                    <i class="fas fa-phone-alt h-6 w-6 mr-3 text-teal-600"></i>
+                                    <span>+91 12345 67890 (Example)</span>
+                                </p>
+                                <p class="flex items-center">
+                                    <i class="fas fa-clock h-6 w-6 mr-3 text-teal-600"></i>
+                                    <span>Open: 11:00 AM - 10:00 PM (Everyday)</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-teal-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-tangerine text-4xl">Braj Chaatkara</p>
+            <p class="mt-2">&copy; 2024 Braj Chaatkara. All Rights Reserved. Designed with ❤️.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                // Close mobile nav if it's open
+                const mobileNav = document.getElementById('mobile-nav');
+                if (!mobileNav.classList.contains('hidden')) {
+                    mobileNav.classList.add('hidden');
+                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Intersection Observer for revealing elements on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after revealing to save resources
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
+
